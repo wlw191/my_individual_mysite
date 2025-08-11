@@ -1,36 +1,73 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Personal Branding Website
+
+This is a personal website designed for building a personal brand. It features an article management system, an "About Me" page, a like functionality for articles, and interactive 3D elements on the homepage.
+
+The website is built with a modern, tech-forward aesthetic using a dark theme and a deep red primary color (`#910202`).
+
+## Tech Stack
+
+- **Framework:** [Next.js](https://nextjs.org/) (App Router)
+- **Language:** [TypeScript](https://www.typescriptlang.org/)
+- **Styling:** [Tailwind CSS](https://tailwindcss.com/)
+- **Database:** [PostgreSQL](https://www.postgresql.org/)
+- **3D Rendering:** [React Three Fiber](https://docs.pmnd.rs/react-three-fiber/getting-started/introduction) & [Drei](https://github.com/pmndrs/drei)
 
 ## Getting Started
 
-First, run the development server:
+Follow these instructions to get a copy of the project up and running on your local machine for development and testing purposes.
+
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) (v18 or later recommended)
+- [npm](https://www.npmjs.com/)
+- A running [PostgreSQL](https://www.postgresql.org/download/) database instance.
+
+### Installation & Setup
+
+1.  **Clone the repository:**
+    ```bash
+    git clone <repository-url>
+    cd personal-site
+    ```
+
+2.  **Install dependencies:**
+    This project uses npm for package management.
+    ```bash
+    npm install
+    ```
+    *(Note: This step is currently blocked in the agent's environment but should work locally.)*
+
+3.  **Set up environment variables:**
+    Create a `.env.local` file in the root of the `personal-site` directory by copying the example file.
+    ```bash
+    cp env.local.example .env.local
+    ```
+    Now, edit the `.env.local` file and update the `POSTGRES_URL` with your actual database connection string.
+    ```
+    POSTGRES_URL="postgresql://YOUR_USER:YOUR_PASSWORD@YOUR_HOST:5432/YOUR_DATABASE"
+    ```
+
+4.  **Set up the database schema:**
+    Connect to your PostgreSQL instance and run the SQL script located in `db/schema.sql` to create the `articles` table. You can use a tool like `psql` or any GUI database client.
+    ```bash
+    psql -U YOUR_USER -d YOUR_DATABASE -f db/schema.sql
+    ```
+
+### Running the Development Server
+
+Once the setup is complete, you can start the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+-   `/src/app/`: Contains all the pages and API routes for the application.
+    -   `/src/app/api/`: All backend API endpoints.
+-   `/src/components/`: Shared React components used across the site (e.g., Layout, 3D Scene).
+-   `/src/lib/`: Shared library/utility functions (e.g., database connection logic).
+-   `/db/`: Contains database-related files, like the schema.
+-   `/public/`: Static assets like images and icons.
